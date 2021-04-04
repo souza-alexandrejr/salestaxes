@@ -3,6 +3,16 @@ Backend Software Engineer - Testing Exercise
 
 ## Projeto Maven, utilizando Java Spring Boot, MySQL, Bootstrap e Thymeleaf 
 
+### Evidências de Teste
+Teste #01
+![image](https://user-images.githubusercontent.com/62431298/113521124-d86e1900-956d-11eb-802a-da2040bdc77e.png)
+
+Teste #02
+![image](https://user-images.githubusercontent.com/62431298/113521211-621de680-956e-11eb-8262-d0dffdb6e4e4.png)
+
+Teste #03
+![image](https://user-images.githubusercontent.com/62431298/113521239-90032b00-956e-11eb-896b-87aada9f1f09.png)
+
 ### Reference Documentation
 For further reference, please consider the following sections:
 
@@ -27,5 +37,4 @@ The following guides illustrate how to use some features concretely:
 * [Securing a Web Application](https://spring.io/guides/gs/securing-web/)
 * [Spring Boot and OAuth2](https://spring.io/guides/tutorials/spring-boot-oauth2/)
 * [Authenticating a User with LDAP](https://spring.io/guides/gs/authenticating-ldap/)
-
 
