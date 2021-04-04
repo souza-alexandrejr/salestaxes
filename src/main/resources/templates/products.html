@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http:thymeleaf.org">
+
+<head>
+  <title>Sales Taxes</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <!-- Material Kit CSS -->
+  <link th:href="@{/css/material-kit.css?v=2.0.7}" rel="stylesheet" />
+  
+</head>
+
+<body>
+  <nav class="navbar navbar-color-on-scroll navbar-transparent fixed-top navbar-expand-lg" color-on-scroll="100">
+    <div class="container">
+      <div class="navbar-translate">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+  
+  <div class="page-header header-filter" data-parallax="true" style="background-image: url('/img/liferay.png')">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 ml-auto mr-auto">
+          <div class="brand text-center">
+            <h1>Backend Software Engineer</h1>
+            <h3 class="title text-center">Testing Exercise: Sales Taxes</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="main main-raised">
+    <div class="container">
+	  <div class="section text-center" th:each="category : ${categories}">
+		<div class="card card-nav-tabs">
+			<div class="card-header card-header-default">
+			  <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
+			  <div class="nav-tabs-navigation">
+				<div class="nav-tabs-wrapper">
+				  <h3 class="title text-center" style="color: black;"><span th:text="${category}"></span></h3>
+				</div>
+			  </div>
+			</div>
+			
+			<div class="row justify-content-center" th:each="product : ${products}" th:if="${product.category.equalsIgnoreCase(category)}">
+				<div class="card mb-10" style="max-width: 540px;">
+				  <div class="row g-0">
+					<div class="col-md-4">
+					  <img th:src="'data:image/png;base64,' + ${product.cover64}" alt="${product.name}">
+					</div>
+					<div class="col-md-8">
+					  <div class="card-body">
+						<h3 class="card-text"><span th:text="${product.name}"></span></h3>
+						<h2 class="card-title"><span th:text="'$' + ${product.price}"></span></h2>
+						<h5 class="card-text" th:if="${product.imported == 1}">(Imported Product)</h5>
+						<a th:href="'/shoppingcart/' + ${product.id}" class="btn btn-success" onclick="addedToCart()">Add to Shopping Cart</a>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			</div>
+					
+			</div>		
+		</div> 
+	</div>
+
+	<div class="section text-center">
+		<a th:href="'/shoppingcart/'" class="btn btn-info btn-lg"><span>Go to Shopping Cart</span></a>
+	</div>	  
+ 
+ </div>
+
+
+  <footer class="footer footer-default">
+    <div class="container">
+      <div class="copyright float-center">
+		<span>Developed by Alexandre de Souza Junior - </span>
+        <script>
+          document.write(new Date().getFullYear())
+        </script>
+      </div>
+    </div>
+  </footer>
+  
+</body>
+
+<script>
+	function addedToCart() {
+		alert("Item added to shopping cart!");
+	}
+</script>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http:thymeleaf.org">
+	<head>
+		<title>Sales Taxes</title>
+		<!--  Bootstrap CSS -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+	</head>
+	
+	<body>
+		<header>
+			<nav class="navbar navbar-light bg-light">
+				<div class="container-fluid">
+					<span class="navbar-brand mb-0 h1" style="font-weight: bold;">Sales Taxes</span>
+				</div>
+			</nav>
+		</header>
+		
+		<section>
+			<div class="container" style="width: 60%; padding-bottom:30px;">
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb" style="background-color: white; padding-left: 0px;">
+						<li class="breadcrumb-item" aria-current="page"><a th:href="'/products/'">Products</a></li>
+						<li class="breadcrumb-item active" aria-current="page">Shopping Cart</li>
+					</ol>
+				</nav>
+			
+				<div class="card shadow-sm bg-white rounded" style="margin-top: 20px;" th:each="item : ${items}">
+					<span th:text="${item.nomeProduto}"></span>
+					<span th:text="${item.qtdProduto}"></span>
+					<span th:text="${item.valorCompra}"></span>
+				</div>		
+				<span th:text="${#numbers.formatDecimal(valorTotal, 0, 'COMMA', 2, 'POINT')}"></span>
+				<span th:text="${#numbers.formatDecimal(salesTaxes, 1, 'COMMA', 2, 'POINT')}"></span>	
+			</div>
+		</section>
+	</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http:thymeleaf.org">
+
+<head>
+  <title>Sales Taxes</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <!-- Material Kit CSS -->
+  <link th:href="@{/css/material-kit.css?v=2.0.7}" rel="stylesheet" />
+  
+</head>
+
+<body>
+  <nav class="navbar navbar-color-on-scroll navbar-transparent fixed-top navbar-expand-lg" color-on-scroll="100">
+    <div class="container">
+      <div class="navbar-translate">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+  
+  <div class="page-header header-filter" data-parallax="true" style="background-image: url('/img/liferay.png')">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 ml-auto mr-auto">
+          <div class="brand text-center">
+            <h1>Backend Software Engineer</h1>
+            <h3 class="title text-center">Testing Exercise: Sales Taxes</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="main main-raised">
+    <div class="container">
+	  <div class="section text-center">
+		<div class="card card-nav-tabs">
+			<div class="card-header card-header-default">
+			  <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
+			  <div class="nav-tabs-navigation">
+				<div class="nav-tabs-wrapper">
+				  <h3 class="title text-center" style="color: black;">Shopping Cart</h3>
+				</div>
+			  </div>
+			</div>
+			
+			<div class="row justify-content-center" th:each="item : ${items}">
+				<div class="card lg-12" style="max-width: 980px;">
+				  <div class="row g-0">
+					<div class="col-md-4">
+					  <img th:src="'data:image/png;base64,' + ${item.cover64}" alt="${item.nomeProduto}">
+					</div>
+					<div class="col-md-8">
+					  <div class="card-body">
+						<h3 class="card-title"><span th:text="${item.nomeProduto}"></span></h3>
+						<h4 class="card-text">Number of items: <span th:text="${item.qtdProduto}"></span></h4>
+						<h4 class="card-text">Value (taxes included): <span th:text="'$' + ${#numbers.formatDecimal(item.valorCompra, 1, 'COMMA', 2, 'POINT')}"></span></h4>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			</div>	
+				
+		</div>
+		
+		<div class="row justify-content-center">
+			<div class="col-md-5">
+				<h2 class="card-title">Total Value: </h2>
+			</div>
+			<div class="col-md-5">
+				<h2 class="card-text"><span th:text="'$' + ${#numbers.formatDecimal(valorTotal, 1, 'COMMA', 2, 'POINT')}"></span></h2>
+			</div>
+		</div>
+		
+		<div class="row justify-content-center">
+			<div class="col-md-5">
+				<h2 class="card-title">Sales Taxes: </h2>
+			</div>
+			<div class="col-md-5">
+				<h2 class="card-text"><span th:text="'$' + ${#numbers.formatDecimal(salesTaxes, 1, 'COMMA', 2, 'POINT')}"></span></h2>
+			</div>
+		</div>
+		
+		<div class="section text-center">
+			<a th:href="'/products/'" class="btn btn-info btn-lg"><span>Back to Products</span></a>
+			<a th:href="'/shoppingcart/empty'" class="btn btn-info btn-lg"><span>Clear Shopping Cart</span></a>
+		</div>
+					
+	</div> 
+  </div>
+ 
+</div>
+
+
+  <footer class="footer footer-default">
+    <div class="container">
+      <div class="copyright float-center">
+		<span>Developed by Alexandre de Souza Junior - </span>
+        <script>
+          document.write(new Date().getFullYear())
+        </script>
+      </div>
+    </div>
+  </footer>
+  
+</body>
+
+<script>
+	function addedToCart() {
+		alert("Item added to shopping cart!");
+	}
+</script>
+
+</html>
